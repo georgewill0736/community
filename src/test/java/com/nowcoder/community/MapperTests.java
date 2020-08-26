@@ -1,6 +1,5 @@
 package com.nowcoder.community;
 
-
 import com.nowcoder.community.dao.DiscussPostMapper;
 import com.nowcoder.community.dao.UserMapper;
 import com.nowcoder.community.entity.DiscussPost;
@@ -50,7 +49,7 @@ public class MapperTests {
         System.out.println(user.getId());
     }
     @Test
-    public void updateUser() {
+    public void testUpdateUser() {
         int rows=userMapper.updateStatus(150,1);
         System.out.println(rows);
 
