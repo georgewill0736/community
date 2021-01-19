@@ -13,11 +13,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.OverridesAttribute;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/alpha")
@@ -94,31 +93,39 @@ public class AlphaController {
     //响应HTML数据
     @RequestMapping(path = "/teacher",method = RequestMethod.GET)
     public ModelAndView getTeacher() {
-        ModelAndView modelAndView =new ModelAndView();
-        modelAndView.addObject("name","杜俊宏");
-        modelAndView.addObject("age","24");
-        modelAndView.setViewName("/demo/view");
-        return modelAndView;
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("name","库里");
+        mav.addObject("age","30");
+        mav.setViewName("/demo/view");
+        return mav;
     }
 
     //
-    @RequestMapping(path = "/school",method = RequestMethod.GET)
-    public String getSchool(Model model) {
+   @RequestMapping(path = "/school",method = RequestMethod.GET)
+   public String getSchool(Model model) {
         model.addAttribute("name","哈尔滨工业大学");
-        model.addAttribute("age","100");
+        model.addAttribute("age",100);
         return "/demo/view";
-    }
+   }
 
     //响应json数据
     //Java对象
     @RequestMapping(path = "/emp",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,Object> getEmp() {
-        Map<String,Object>  emp=new HashMap<>();
+    public List<Map<String,Object>> getEmp() {
+        List<Map<String,Object>> list = new ArrayList<>();
+        Map emp = new HashMap();
         emp.put("name","杜俊宏");
         emp.put("age",24);
-        emp.put("salary",555525);
-        return emp;
+        emp.put("salary",1000000000);
+
+        list.add(emp);
+        emp=new HashMap();
+        emp.put("name","罗伊");
+        emp.put("team","开拓者");
+        emp.put("age",39);
+        list.add(emp);
+        return list;
     }
 
     //cookie示例

@@ -18,18 +18,19 @@ public class MailTests {
     @Autowired
     private TemplateEngine templateEngine;
 
+
     @Test
     public void testTextMail() {
         mailClient.sendMail("djh0736@163.com","Test","Welcome!?!?!?!");
     }
 
     @Test
-    public void testHtmlMail() {
-        Context context =new Context();
-        context.setVariable("username","sunday");
+    public void testHtml() {
+        Context context = new Context();
+        context.setVariable("username","新年快乐");
         String content = templateEngine.process("/mail/demo",context);
         System.out.println(content);
-        mailClient.sendMail("djh0736@163.com","Html",content);
+        mailClient.sendMail("djh0736@163.com","验证html",content);
     }
 
 }
