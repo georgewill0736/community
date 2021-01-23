@@ -1,6 +1,7 @@
 package com.nowcoder.community.controller;
 
 import com.nowcoder.community.Service.UserService;
+import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
@@ -47,11 +48,13 @@ public class UserController {
     @Autowired
     private HostHolder hostHolder;
 
+    @LoginRequired
     @RequestMapping(path = "/setting",method = RequestMethod.GET)
     public String getSettingPage() {
         return "/site/setting";
     }
 
+    @LoginRequired
     @RequestMapping(path = "/upload",method = RequestMethod.POST)
     public String uploadHeader(MultipartFile headerImage, Model model) {
         if (headerImage==null) {
@@ -60,7 +63,7 @@ public class UserController {
         }
 
         String fileName = headerImage.getOriginalFilename();
-        String suffix = fileName.substring(fileName.lastIndexOf('.')+1);
+        String suffix = fileName.substring(fileName.lastIndexOf('.'));
         if (StringUtils.isBlank(suffix)) {
             model.addAttribute("error","文件格式不正确");
             return "/site/setting";
@@ -90,7 +93,7 @@ public class UserController {
         //服务器存放的路径
         fileName = uploadPath+"/"+fileName;
         //文件后缀
-        String suffix = fileName.substring(fileName.lastIndexOf('.'));
+        String suffix = fileName.substring(fileName.lastIndexOf('.')+1);
         //响应文件
         response.setContentType("image/"+suffix);
         try (
