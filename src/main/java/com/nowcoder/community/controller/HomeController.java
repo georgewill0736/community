@@ -54,7 +54,7 @@ public class HomeController implements CommunityConstant {
         return "/index";
     }
 
-    @RequestMapping(value = "/error",method = RequestMethod.GET)
+    @RequestMapping(path = "/error",method = RequestMethod.GET)
     public String getErrorPage() {
         return "/error/500";
     }

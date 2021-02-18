@@ -39,7 +39,7 @@ public class CommentController implements CommunityConstant {
 
 
 
-    @RequestMapping(value = "/add/{discussPostId}",method = RequestMethod.POST)
+    @RequestMapping(path = "/add/{discussPostId}",method = RequestMethod.POST)
     public String addComment(@PathVariable("discussPostId") int discussPostId, Comment comment) {
         comment.setUserId(hostHolder.getUser().getId());
         comment.setStatus(0);
