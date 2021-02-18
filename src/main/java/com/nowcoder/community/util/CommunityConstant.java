@@ -43,6 +43,27 @@ public interface CommunityConstant {
      */
     int ENTITY_TYPE_USER = 3;
 
+    /**
+     * 事件的主题：评论
+     */
+    String TOPIC_COMMENT = "comment";
+
+
+    /**
+     * 事件的主题：点赞
+     */
+    String TOPIC_LIKE = "like";
+
+
+    /**
+     * 事件的主题：关注
+     */
+    String TOPIC_FOLLOW = "follow";
+
+    /**
+     * 系统用户的ID
+     */
+    int SYSTEM_USER_ID = 1;
 
 
 }
